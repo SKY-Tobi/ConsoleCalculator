@@ -1,6 +1,6 @@
 package ch.bbw.ConsoleCalculator;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,18 +17,43 @@ public class CalculatorTest
 		testee = new Calculator();
 	}
     @Test
-    public void testSummeZweiPositive()
+    public void testSummeZweiPositiveIsOk()
     {
-        assertTrue(testee.summe(10, 20) == 30 );
+    	assertEquals(30, testee.summe(10, 20));
     }
     @Test
-    public void testSummeZweiNegative()
+    public void testSummeZweiNegativeIsOk()
     {
-    	assertTrue(testee.summe(-10, -20) == -30 );
+    	assertEquals(-30, testee.summe(-10, -20));
     }
     @Test
-    public void testSummeZweiNull()
+    public void testSummeZweiNullIsOk()
     {
-    	assertTrue(testee.summe(0, 0) == 0 );
+    	assertEquals(0, testee.summe(0, 0));
+    }
+    @Test
+    public void testSummeZweiMAX_VALUEIsOk()
+    {
+    	assertEquals(-2, testee.summe(Integer.MAX_VALUE, Integer.MAX_VALUE));
+    }
+    @Test
+    public void testSummeZweiMIN_VALUEIsOk()
+    {
+    	assertEquals(0, testee.summe(Integer.MIN_VALUE, Integer.MIN_VALUE));
+    }
+    @Test
+    public void testSummeMAX_VALUEMitEinsIsOk()
+    {
+    	assertEquals(-2147483648, testee.summe(Integer.MAX_VALUE, 1));
+    }
+    @Test
+    public void testSummeMIN_VALUEMitMinusEinsIsOk()
+    {
+    	assertEquals(2147483647, testee.summe(Integer.MIN_VALUE, -1));
+    }
+    @Test
+    public void testSummeMIN_VALUEMitMAX_VALUEIsOk()
+    {
+    	assertEquals(0, testee.summe(Integer.MIN_VALUE, Integer.MIN_VALUE));
     }
 }
