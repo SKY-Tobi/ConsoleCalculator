@@ -36,4 +36,9 @@ public class CalculatorTest
     {
     	assertEquals(-2, testee.summe(Integer.MAX_VALUE, Integer.MAX_VALUE));
     }
+    @Test
+    public void testSummeZweiMIN_VALUEIsOk()
+    {
+    	assertEquals(0, testee.summe(Integer.MIN_VALUE, Integer.MIN_VALUE));
+    }
 }
