@@ -41,4 +41,19 @@ public class CalculatorTest
     {
     	assertEquals(0, testee.summe(Integer.MIN_VALUE, Integer.MIN_VALUE));
     }
+    @Test
+    public void testSummeMAX_VALUEMitEinsIsOk()
+    {
+    	assertEquals(-2147483648, testee.summe(Integer.MAX_VALUE, 1));
+    }
+    @Test
+    public void testSummeMIN_VALUEMitMinusEinsIsOk()
+    {
+    	assertEquals(2147483647, testee.summe(Integer.MIN_VALUE, -1));
+    }
+    @Test
+    public void testSummeMIN_VALUEMitMAX_VALUEIsOk()
+    {
+    	assertEquals(0, testee.summe(Integer.MIN_VALUE, Integer.MIN_VALUE));
+    }
 }
