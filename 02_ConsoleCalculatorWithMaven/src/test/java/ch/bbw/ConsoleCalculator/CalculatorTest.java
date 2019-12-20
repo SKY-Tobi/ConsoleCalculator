@@ -134,7 +134,47 @@ public class CalculatorTest {
 
 	@Test
 	public void testDivisionMIN_VALUEMitMAX_VALUEIsOk() {
-		assertEquals(1, testee.division(Integer.MIN_VALUE, Integer.MIN_VALUE), 0);
+		assertEquals(-1, testee.division(Integer.MIN_VALUE, Integer.MAX_VALUE), 0);
+	}
+	
+	@Test
+	public void testDoubleInBinaryStringPositiveIsOk() {
+		assertEquals("100000000101000000000000000000000000000000000000000000000000000", testee.doubleInBinär(12.0));
+	}
+	
+	@Test
+	public void testDoubleInBinaryStringNegativeIsOk() {
+		assertEquals("1100000000101000000000000000000000000000000000000000000000000000", testee.doubleInBinär(-12.0));
+	}
+	
+	@Test
+	public void testDoubleInBinaryStringPositiveDecimalIsOk() {
+		assertEquals("100000000101000001111101111100111011011001000101101000011100101", testee.doubleInBinär(12.123));
 	}
 
+	@Test
+	public void testDoubleInBinaryStringNegativeDecimalIsOk() {
+		assertEquals("1100000000101000001111101111100111011011001000101101000011100101", testee.doubleInBinär(-12.123));
+	}
+	
+	@Test
+	public void testDoubleInBinaryStringNullIsOk() {
+		assertEquals("0", testee.doubleInBinär(0));
+	}
+	
+	@Test
+	public void testDoubleInBinaryStringMIN_VALUEMitMinusEinsIsOk() {
+		assertEquals("1100000111100000000000000000000000000000000000000000000000000000", testee.doubleInBinär(Integer.MIN_VALUE));
+	}
+	
+	@Test
+	public void testDoubleInBinaryStringMIN_VALUEMitMAX_VALUEIsOk() {
+		assertEquals("100000111011111111111111111111111111111110000000000000000000000", testee.doubleInBinär(Integer.MAX_VALUE));
+	}
+	
+	@Test
+	public void testDoubleInBinaryStringNullNullpointerException() {
+		assertThrows(NullPointerException.class, () -> testee.doubleInBinär((Double) null));
+	}
+	
 }
