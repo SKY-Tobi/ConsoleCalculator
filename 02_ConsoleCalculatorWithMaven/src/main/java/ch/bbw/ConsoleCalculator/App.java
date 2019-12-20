@@ -4,7 +4,7 @@ package ch.bbw.ConsoleCalculator;
  * Console Calculator App
  * 
  * @author tobias.heierli
- * @version 0.0.2
+ * @version 0.0.3
  */
 public class App 
 {
@@ -22,6 +22,7 @@ public class App
         valueB = 20;
         
         System.out.println("Summe " + valueA + " + " + valueB + " = " + calculator.summe(valueA, valueB));
-        System.out.println("Subtraktion " + valueB + " + " + valueA + " = " + calculator.subtraktion(valueB, valueA));
+        System.out.println("Subtraktion " + valueB + " - " + valueA + " = " + calculator.subtraktion(valueB, valueA));
+        System.out.println("Division " + valueB + " / " + valueA + " = " + calculator.division(valueB, valueA));
     }
 }
