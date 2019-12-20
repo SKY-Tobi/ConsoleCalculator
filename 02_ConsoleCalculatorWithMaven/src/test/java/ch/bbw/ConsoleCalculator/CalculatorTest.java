@@ -1,6 +1,7 @@
 package ch.bbw.ConsoleCalculator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -53,7 +54,7 @@ public class CalculatorTest {
 
 	@Test
 	public void testSummeMIN_VALUEMitMAX_VALUEIsOk() {
-		assertEquals(0, testee.summe(Integer.MIN_VALUE, Integer.MIN_VALUE));
+		assertEquals(-1, testee.summe(Integer.MIN_VALUE, Integer.MAX_VALUE));
 	}
 
 	@Test
@@ -93,7 +94,47 @@ public class CalculatorTest {
 
 	@Test
 	public void testSubtraktionMIN_VALUEMitMAX_VALUEIsOk() {
-		assertEquals(0, testee.subtraktion(Integer.MIN_VALUE, Integer.MIN_VALUE));
+		assertEquals(1, testee.subtraktion(Integer.MIN_VALUE, Integer.MAX_VALUE));
+	}
+	
+	@Test
+	public void testDivisionZweiPositiveIsOk() {
+		assertEquals(2, testee.division(20, 10), 0);
+	}
+	
+	@Test
+	public void testDivisonZweiNegativeIsOk() {
+		assertEquals(2, testee.division(-20, -10), 0);
+	}
+	
+	@Test
+	public void testDivisionZweiNullArithmeticException() {
+		assertThrows(ArithmeticException.class, () -> testee.division(0, 0));
+	}
+	
+	@Test
+	public void testDivisionZweiMAX_VALUEIsOk() {
+		assertEquals(1, testee.division(Integer.MAX_VALUE, Integer.MAX_VALUE), 0);
+	}
+	
+	@Test
+	public void testDivisionZweiMIN_VALUEIsOk() {
+		assertEquals(1, testee.division(Integer.MIN_VALUE, Integer.MIN_VALUE), 0);
+	}
+	
+	@Test
+	public void testDivisionMAX_VALUEMitEinsIsOk() {
+		assertEquals(2.147483647E9, testee.division(Integer.MAX_VALUE, 1), 0);
+	}
+
+	@Test
+	public void testDivisionMIN_VALUEMitMinusEinsIsOk() {
+		assertEquals(-2.147483648E9, testee.division(Integer.MIN_VALUE, -1), 0);
+	}
+
+	@Test
+	public void testDivisionMIN_VALUEMitMAX_VALUEIsOk() {
+		assertEquals(1, testee.division(Integer.MIN_VALUE, Integer.MIN_VALUE), 0);
 	}
 
 }
