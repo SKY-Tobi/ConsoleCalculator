@@ -174,6 +174,7 @@ public class CalculatorTest {
 				testee.doubleInBinär(Integer.MAX_VALUE));
 	}
 
+	@SuppressWarnings("null")
 	@Test
 	public void testDoubleInBinaryStringNullNullpointerException() {
 		assertThrows(NullPointerException.class, () -> testee.doubleInBinär((Double) null));
@@ -195,7 +196,7 @@ public class CalculatorTest {
 	public void testZinsesZinsZinsist100ProzentIsOk() {
 		assertEquals(2400, testee.zinsesZins(1200, 100, 1), 0);
 	}
-	
+
 	@Test
 	public void testZinsesZinsZinsistMinus100ProzentIsOk() {
 		assertEquals(0, testee.zinsesZins(1200, -100, 1), 0);
@@ -205,19 +206,61 @@ public class CalculatorTest {
 	public void testZinsesZinsMinus1JahrIsOk() {
 		assertEquals(600, testee.zinsesZins(1200, 100, -1), 0);
 	}
-	
+
 	@Test
 	public void testZinsesZinsKapitalist0IsOk() {
 		assertEquals(0, testee.zinsesZins(0, 4, 5), 0);
 	}
-	
+
 	@Test
 	public void testZinsesZinsZinsist0IsOk() {
 		assertEquals(1200, testee.zinsesZins(1200, 0, 5), 0);
 	}
-	
+
 	@Test
 	public void testZinsesZinsJahrist0IsOk() {
 		assertEquals(1200, testee.zinsesZins(1200, 4, 0), 0);
+	}
+
+	// Testdaten von der aufgabe genommen:
+	// https://de.serlo.org/mathe/terme-gleichungen/gleichungen/quadratische-gleichungen/aufgaben-quadratischen-gleichungen
+	@Test
+	public void testquadratischeGleichungenMultiplikatorDachIsOk() {
+		assertEquals("2.0, -8.0", testee.quadratischeFormel("x^x + 6x - 16"));
+	}
+	
+	@Test
+	public void testquadratischeGleichungenMultiplikatorSternIsOk() {
+		assertEquals("-1.0, -9.0", testee.quadratischeFormel("x*x + 10x + 9"));
+	}
+	
+	@Test
+	public void testquadratischeGleichungenAIstEinHalbIsOk() {
+		assertEquals("7.0, -4.0", testee.quadratischeFormel("0.5x*x - 1.5x - 14"));
+	}
+	
+	@Test
+	public void testquadratischeGleichungenAIstMinusEinHalbIsOk() {
+		assertEquals("-1.0, 15.0", testee.quadratischeFormel("-0.5x*x + 7x + 7.5"));
+	}
+	
+	@Test
+	public void testquadratischeGleichungenAIstDreiUndNurEineLösungIsOk() {
+		assertEquals("-1.0", testee.quadratischeFormel("3x*x + 6x + 3"));
+	}
+	
+	@Test
+	public void testquadratischeGleichungenAIstNullIsOk() {
+		assertEquals("nicht möglich", testee.quadratischeFormel("0x*x + 6x + 3"));
+	}
+	
+	@Test
+	public void testquadratischeGleichungenNichtMöglichDaDKleiner0IstIsOk() {
+		assertEquals("nicht möglich", testee.quadratischeFormel("x*x + 2x + 3"));
+	}
+	
+	@Test
+	public void testquadratischeGleichungFalscheParameterException() {
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> testee.quadratischeFormel(""));
 	}
 }
